@@ -30,3 +30,9 @@ const server = http.createServer((req,res)=>{
     }
 })
 
+//port oluşturma
+const PORT = 7000
+
+//server dinleme
+server.listen(PORT,()=>console.log(`Server ${PORT} portu üzerinde çalışmaya başladı`))
+
