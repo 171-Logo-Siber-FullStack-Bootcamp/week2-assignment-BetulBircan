@@ -17,3 +17,8 @@ const PORT = 5000
 app.listen(PORT)
 */
 
+//express kütüphanesi çağırıldı.
+const express = require("express")
+//posts ve users verileri ssyfaya eklendi.
+const posts = require("./data/posts.json")
+const users = require("./data/users.json")
