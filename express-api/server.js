@@ -37,3 +37,19 @@ app.get("/users", (req,res) => {
     else
         res.send(users)
 })
+
+//route parameresi ile 3 numaralı postu bulma
+app.get("/posts/:postId",(req,res) => {
+    console.log(req.params.postId)
+    var result
+
+    result = posts.filter(b => b.id == req.params.postId)
+    res.send(result)
+})
+
+//post bilgileri getirildi
+app.get("/posts",(req,res)=> {
+    res.send(posts)
+})
+const PORT = 5500
+app.listen(PORT)
