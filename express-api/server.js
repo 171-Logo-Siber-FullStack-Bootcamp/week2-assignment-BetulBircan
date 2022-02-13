@@ -22,3 +22,18 @@ const express = require("express")
 //posts ve users verileri ssyfaya eklendi.
 const posts = require("./data/posts.json")
 const users = require("./data/users.json")
+
+//uygulama oluşturuldu.
+const app = express();
+
+//app.get ile users bilgileri çağırıldı ve response edildi
+app.get("/users", (req,res) => {
+    console.log(req.query)   
+    //querystring ile id si 5 olan user ı getirme
+    if(req.query.id) {
+        var item = users.filter(a => a.id == req.query.id)
+        res.send(item)
+    }
+    else
+        res.send(users)
+})
