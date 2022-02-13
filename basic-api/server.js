@@ -19,3 +19,12 @@ server.listen(PORT,()=> console.log(`server ${PORT} üzerinden çalışmaya baş
 //Gerekli kütüphaneyi çağır
 const http = require("http") //kendi serverımızı oluşturmak için gerekli kütüphane
 const friends = require("./data.json") //data.json daki verileri kütüphane şeklinde ekledik
+
+//server oluştur
+const server = http.createServer((req,res) => {
+    console.log(req.url)
+    res.statusCode = 200  //Başarılı Olduğunda demek
+    res.setHeader("Content-Type","application/json") //server a talep gönderen clientların alacağı cevabın türü belirleniyor.biz json diyoruz.
+    res.write(JSON.stringify(friends)) //onları jsona a çevirerek data.json içerisindek, verileri yolladık.
+    res.end()
+})
