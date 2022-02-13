@@ -30,6 +30,22 @@ const isItDoneYet = new Promise((resolve, reject) => {
   }
 })
 
+//bu fonksiyon ile promise le yapılan fonksiyonu yazdık
+const checkIfItsDone = () => {
+    isItDoneYet
+    //resolve tetikler
+      .then(ok => {
+        console.log(ok)
+      })
+  
+      //reject tetikler
+      .catch(err => {
+        console.error(err)
+      })
+  }
+  
+  //fonksiyon çağrılır
+  checkIfItsDone()  
 
 
 
