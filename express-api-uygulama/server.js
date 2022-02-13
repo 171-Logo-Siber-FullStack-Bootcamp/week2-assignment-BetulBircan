@@ -4,7 +4,9 @@
 //express kütüphanesini sayfaya ekleme
 const express = require("express")
 //src/controller klasöründeki posts-controller dosyasını buraya ekledik
-const postController = require("./src/controllers/posts-controller.js")  
+const postController = require("./src/controllers/posts-controller.js") 
+//src/controller klasöründeki users-controller dosyasını buraya ekledik
+const userController = require("./src/controllers/users-controller.js") 
 
 //uygulamayı oluşturma
 const app = express()   
@@ -22,6 +24,20 @@ app.get("/posts", (req, res ) => {
 app.get("/posts/:postId", (req, res) => {
     var post = postController.getByPostId(req.params.postId)
     res.send(post)
+})
+
+//get ile user ları çağırma
+app.get("/users", (req,res) => {
+    //controller çağrılması
+    var users = userController.getAllUsers()
+    //veri döndürme
+    res.send(users)
+})
+
+//user/6 dediğimizde id si 6 olan user ı getirme
+app.get("/users/:userId", (req, res) => {
+    var user = userController.getByUserId(req.params.userId)
+    res.send(user)
 })
 
 app.listen(6600)   //server ı dinleme
