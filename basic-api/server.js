@@ -28,3 +28,8 @@ const server = http.createServer((req,res) => {
     res.write(JSON.stringify(friends)) //onları jsona a çevirerek data.json içerisindek, verileri yolladık.
     res.end()
 })
+
+//port numarasını belirle
+const PORT = 6000
+//server ı dinlemeye başla
+server.listen(PORT,()=> console.log(`server ${PORT} üzerinden çalışmaya başladı`))
