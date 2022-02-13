@@ -7,10 +7,11 @@ const express = require("express")
 const postController = require("./src/controllers/posts-controller.js") 
 //src/controller klasöründeki users-controller dosyasını buraya ekledik
 const userController = require("./src/controllers/users-controller.js") 
+//src/controller klasöründeki todos-controller dosyasını buraya ekledik
+const todoController = require("./src/controllers/todos-controller.js")  
 
 //uygulamayı oluşturma
 const app = express()   
-
 
 //get ile postları çağırma
 app.get("/posts", (req, res ) => {
@@ -38,6 +39,18 @@ app.get("/users", (req,res) => {
 app.get("/users/:userId", (req, res) => {
     var user = userController.getByUserId(req.params.userId)
     res.send(user)
+})
+
+//to dos verilerini get ile getirme
+app.get("/todos", (req, res ) => {
+    var todos
+    if(req.query.userId) {
+        todos = todoController.getTodosByUserId(req.query.userId)
+    }
+    else {
+        todos = todoController.getAllTodos()
+    }
+    res.send(todos)
 })
 
 app.listen(6600)   //server ı dinleme
